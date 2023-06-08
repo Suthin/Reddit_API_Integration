@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{A421CDDD-FFAC-4B07-BC4A-7997A178380C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.Integration.Library", "Reddit.Integration.Library\Reddit.Integration.Library.csproj", "{FB767681-14DA-41EF-9F48-EE6DF8F17679}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.Integration.Client.Console", "Clients\Reddit.Integration.Client.Console\Reddit.Integration.Client.Console.csproj", "{C53493BD-15A6-45F2-B13E-89C67F15014B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.Integration.Client.Web", "Clients\Reddit.Integration.Client.Web\Reddit.Integration.Client.Web.csproj", "{9F2B2D87-E7D6-41BA-AB0F-FBB3A83B9D56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1FB22159-0E6C-4A4D-AF2A-4F9B2A8F2F01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.Integration.Tests", "Tests\Reddit.Integration.Tests\Reddit.Integration.Tests.csproj", "{740CB268-67A4-40F7-B04A-2B44F0976CC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB767681-14DA-41EF-9F48-EE6DF8F17679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB767681-14DA-41EF-9F48-EE6DF8F17679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB767681-14DA-41EF-9F48-EE6DF8F17679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB767681-14DA-41EF-9F48-EE6DF8F17679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C53493BD-15A6-45F2-B13E-89C67F15014B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C53493BD-15A6-45F2-B13E-89C67F15014B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C53493BD-15A6-45F2-B13E-89C67F15014B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C53493BD-15A6-45F2-B13E-89C67F15014B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F2B2D87-E7D6-41BA-AB0F-FBB3A83B9D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F2B2D87-E7D6-41BA-AB0F-FBB3A83B9D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F2B2D87-E7D6-41BA-AB0F-FBB3A83B9D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F2B2D87-E7D6-41BA-AB0F-FBB3A83B9D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740CB268-67A4-40F7-B04A-2B44F0976CC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740CB268-67A4-40F7-B04A-2B44F0976CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740CB268-67A4-40F7-B04A-2B44F0976CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740CB268-67A4-40F7-B04A-2B44F0976CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C53493BD-15A6-45F2-B13E-89C67F15014B} = {A421CDDD-FFAC-4B07-BC4A-7997A178380C}
+		{9F2B2D87-E7D6-41BA-AB0F-FBB3A83B9D56} = {A421CDDD-FFAC-4B07-BC4A-7997A178380C}
+		{740CB268-67A4-40F7-B04A-2B44F0976CC2} = {1FB22159-0E6C-4A4D-AF2A-4F9B2A8F2F01}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6841E16E-3258-45F4-B59A-C5693A7457A4}
+	EndGlobalSection
+EndGlobal

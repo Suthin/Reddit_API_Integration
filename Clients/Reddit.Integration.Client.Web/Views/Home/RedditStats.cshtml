@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Reddit.Integration.Library.Models.User>
+
+@{
+    ViewData["Title"] = "Reddit Statistics";
+
+}
+
+<div class="header">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
+
+
+<div>
+    <button id="btnReloadPost" class=" button">Reload Posts</button>
+</div>
+
+<div id="divTopPosts" style="padding-bottom:50px;">
+    @Html.Partial("_TopPosts",ViewData["PageContent"])
+</div>
+
+
+<div>
+    <button id="btnReloadUser" class=" button">Reload Users</button>
+</div>
+
+<div id="divTopUsers">
+    @Html.Partial("_TopUsers")
+</div>
+
+

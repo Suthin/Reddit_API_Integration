@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Reddit.Integration.Library.Models.Post>
+<div class="subheader"><h2>Top 10 Posts</h2></div>
+
+<div id="divPostLastUpdatedOn" class="pnlLastupdate"> Last updated on: @DateTime.Now</div>
+
+
+<table>
+    <tr>
+        <th>Title </th>
+        <th>Score </th>
+        <th>UpVotes </th>
+    </tr>
+    @foreach (var d in Model) {
+        <tr>
+            <td><a href="https://www.reddit.com@(d.Url)" target="_blank"> @d.Title</a></td>
+            <td>@d.Score</td>
+            <td>@d.UpVotes</td>
+
+        </tr>
+    }
+</table>
+
+<script type="text/javascript">
+
+    function DisplayPostsDateTime() {
+        var DateTime = new Date();
+        var strYear = DateTime.getYear();
+        var strMonth = DateTime.getMonth() + 1;
+        var strDay = DateTime.getDate();
+        var strHours = DateTime.getHours();
+        var strMinutes = DateTime.getMinutes();
+        var strSeconds = DateTime.getSeconds();
+        var tagDiv = document.getElementById("divDate");
+        tagDiv.innerText = "MM/DD/YYYY  HH:MM:SS";
+        tagDiv.innerText ="Last updated on: "  strMonth + "/" + strDay + "/" + strYear + "  " + strHours + ":" + strMinutes + ":" + strSeconds;
+    }
+
+    DisplayPostsDateTime();
+</script>
+
+
