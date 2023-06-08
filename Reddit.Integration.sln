@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.Integration.Client.W
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1FB22159-0E6C-4A4D-AF2A-4F9B2A8F2F01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.Integration.Tests", "Tests\Reddit.Integration.Tests\Reddit.Integration.Tests.csproj", "{740CB268-67A4-40F7-B04A-2B44F0976CC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reddit.Integration.Tests", "Tests\Reddit.Integration.Tests\Reddit.Integration.Tests.csproj", "{740CB268-67A4-40F7-B04A-2B44F0976CC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6FFB3421-DAC9-4E81-AEBF-191D18FE9376}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
