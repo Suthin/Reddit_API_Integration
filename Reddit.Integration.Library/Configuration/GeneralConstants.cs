@@ -21,6 +21,7 @@ namespace Reddit.Integration.Library.Configuration {
         public const string REDDIT_ACCESS_TOKEN_NAME = "access_token";
 
         public const string REDDIT_SUBREDDIT_USER_POPULAR = "popular";
+        public const string REDDIT_SUBREDDIT_FILTER_TYPE_DAY = "day";
 
         public const int DEFAULT_POSTS_MAX_COUNT = 10;
         public const int DEFAULT_USERS_MAX_COUNT = 10;

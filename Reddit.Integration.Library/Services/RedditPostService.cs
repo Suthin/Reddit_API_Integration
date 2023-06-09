@@ -22,7 +22,7 @@ namespace Reddit.Integration.Library.Services {
 
         public RedditPostService(RedditServiceConfig redditServiceConfig) {
             this._redditServiceConfig = redditServiceConfig;
-            
+
         }
 
 
@@ -37,13 +37,13 @@ namespace Reddit.Integration.Library.Services {
 
                 //Validate Access Token
                 if (string.IsNullOrWhiteSpace(token)) {
-                    throw new RedditException("Invalid Parameter/Configuration: Token.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Token"));
                 }
 
 
                 if (this._redditServiceConfig == null || this._redditServiceConfig.redditConfig == null) {
 
-                    throw new RedditException("Invalid Parameter/Configuration:Reedit Configuration.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Reddit Configuration"));
 
                 }
 
@@ -52,7 +52,7 @@ namespace Reddit.Integration.Library.Services {
 
                     if (string.IsNullOrEmpty(this._redditServiceConfig.redditConfig.SubReddit)) {
 
-                        throw new RedditException("Invalid Parameter/Configuration:SubReddit.");
+                        throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Subreddit"));
                     }
                     else {
 
@@ -66,14 +66,14 @@ namespace Reddit.Integration.Library.Services {
 
                 if (string.IsNullOrEmpty(this._redditServiceConfig.redditConfig.ClientId)) {
 
-                    throw new RedditException("Invalid Parameter/Configuration:ClientId.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "ClientId"));
                 }
 
                 //Validate APP Secret
 
                 if (string.IsNullOrEmpty(this._redditServiceConfig.redditConfig.ClientSecret)) {
 
-                    throw new RedditException("Invalid Parameter/Configuration:Client Secret.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Client Secret"));
                 }
 
                 if (noOfPosts < 1) {
@@ -101,7 +101,7 @@ namespace Reddit.Integration.Library.Services {
                 List<Models.Post> postList = new List<Post>();
 
                 // Get the top 10 posts from the last 24 hours.  --Kris
-                var posts = subreddit.Posts.GetTop(new TimedCatSrListingInput(t: "day", limit: noOfPosts));
+                var posts = subreddit.Posts.GetTop(new TimedCatSrListingInput(t: GeneralConstants.REDDIT_SUBREDDIT_FILTER_TYPE_DAY, limit: noOfPosts));
 
                 if (posts != null && posts.Count > 0) {
 
@@ -122,7 +122,7 @@ namespace Reddit.Integration.Library.Services {
                 _logger.LogError(ec, ec.Message);
 
                 //Since we already logged the error information we can return custom exception back
-                throw new RedditException("Unknown error in GetTopPosts.");
+                throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "GetTopPosts"));
 
             }
         }

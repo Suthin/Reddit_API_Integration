@@ -5,6 +5,7 @@ using Reddit.Inputs;
 using Reddit.Integration.Library.Configuration;
 using Reddit.Integration.Library.Models;
 using Reddit.Integration.Library.Services;
+using Reddit.Integration.Library.Utils;
 using Reddit.Models;
 using System.Diagnostics;
 using System.IO;
@@ -24,28 +25,29 @@ try {
 
     //Validate configuration
     if (settings == null || settings.redditConfig == null) {
-        throw new RedditException("Invalid Parameter/Configuration:Reedit Configuration.");
+        throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Reddit Configuration"));
     }
 
     //validate ClientId
     if (string.IsNullOrEmpty(settings.redditConfig.ClientId)) {
 
-        throw new RedditException("Invalid Parameter/Configuration:Client Id.");
+        throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "ClientId"));
     }
 
     //Validate Client Secret
     if (string.IsNullOrEmpty(settings.redditConfig.ClientSecret)) {
 
-        throw new RedditException("Invalid Parameter/Configuration:Client Secret.");
+        throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Client Secret"));
     }
     if (string.IsNullOrEmpty(settings.redditConfig.ChromeBrowserPath)) {
 
-        throw new RedditException("Invalid Parameter/Configuration:Chrome browser path.");
+        throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Chrome browser path"));
+
     }
     else {
 
         if (!File.Exists(settings.redditConfig.ChromeBrowserPath)) {
-            throw new RedditException("Invalid Parameter/Configuration:Chrome browser path.");
+            throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Chrome browser path"));
         }
 
     }

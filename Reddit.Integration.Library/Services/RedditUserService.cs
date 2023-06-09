@@ -36,13 +36,13 @@ namespace Reddit.Integration.Library.Services {
 
                 //Validate Access Token
                 if (string.IsNullOrWhiteSpace(token)) {
-                    throw new RedditException("Invalid Parameter/Configuration: Token.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Token"));
                 }
 
 
                 if (this._redditServiceConfig == null || this._redditServiceConfig.redditConfig == null) {
 
-                    throw new RedditException("Invalid Parameter/Configuration:Reedit Configuration.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Reddit Configuration"));
 
                 }
 
@@ -51,7 +51,7 @@ namespace Reddit.Integration.Library.Services {
 
                     if (string.IsNullOrEmpty(this._redditServiceConfig.redditConfig.SubReddit)) {
 
-                        throw new RedditException("Invalid Parameter/Configuration:SubReddit.");
+                        throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "Subreddit"));
                     }
                     else {
 
@@ -65,14 +65,14 @@ namespace Reddit.Integration.Library.Services {
 
                 if (string.IsNullOrEmpty(this._redditServiceConfig.redditConfig.ClientId)) {
 
-                    throw new RedditException("Invalid Parameter/Configuration:ClientId.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "ClientId"));
                 }
 
                 //Validate APP Secret
 
                 if (string.IsNullOrEmpty(this._redditServiceConfig.redditConfig.ClientSecret)) {
 
-                    throw new RedditException("Invalid Parameter/Configuration:Client Secret.");
+                    throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "ClientSecret"));
                 }
 
                 if (noOfUsers < 1) {
@@ -97,7 +97,6 @@ namespace Reddit.Integration.Library.Services {
 
                 var subreddit = reddit.Subreddit(subRedditName);
 
-                var today = DateTime.Today;
 
                 var users = reddit.GetUserSubreddits(GeneralConstants.REDDIT_SUBREDDIT_USER_POPULAR, limit: noOfUsers);
 
@@ -121,8 +120,8 @@ namespace Reddit.Integration.Library.Services {
 
                 _logger.LogError(ec, ec.Message);
 
-                //Since we already logged the error information we can return custom exception back
-                throw new RedditException("Unknown error in GetTopUsers.");
+                //Since we already logged the error information we can return custom exception back                
+                throw new RedditException(MessageHelper.GetMessage(MessageType.ValdationError, "GetTopUsers"));
 
             }
         }
