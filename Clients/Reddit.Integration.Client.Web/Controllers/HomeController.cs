@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Reddit.Inputs;
 using Reddit.Integration.Client.Web.Models;
 using Reddit.Integration.Library.Configuration;
+using Reddit.Integration.Library.Interfaces;
 using Reddit.Integration.Library.Models;
 using Reddit.Integration.Library.Services;
 using System.Diagnostics;
@@ -13,13 +14,15 @@ using System.Diagnostics;
 namespace Reddit.Integration.Client.Web.Controllers {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
-        private readonly RedditServiceConfig _redditServiceConfig;
+        private readonly IRedditPostService _redditPostService;
+        private readonly IRedditUserService _redditUserService;
 
         public static string AccessToken = string.Empty;
 
-        public HomeController(ILogger<HomeController> logger, RedditServiceConfig redditServiceConfig) {
-            _logger = logger;
-            _redditServiceConfig = redditServiceConfig;
+        public HomeController(ILogger<HomeController> logger, IRedditPostService redditPostService, IRedditUserService redditUserService) {
+            _logger = logger;            
+            _redditPostService = redditPostService;
+            _redditUserService=redditUserService;
         }
 
         [Authorize]
@@ -29,11 +32,9 @@ namespace Reddit.Integration.Client.Web.Controllers {
 
                 if (!string.IsNullOrWhiteSpace(AccessToken)) {
 
-                    RedditPostService rps = new RedditPostService(_redditServiceConfig);
-                    var resPosts = await rps.GetTopPostsAsync(AccessToken, TokenType.AccessToken);
+                    var resPosts = await _redditPostService.GetTopPostsAsync(AccessToken, TokenType.AccessToken);
 
-                    RedditUserService rus = new RedditUserService(_redditServiceConfig);
-                    var resUsers = await rus.GetTopUsersAsync(AccessToken, TokenType.AccessToken);
+                    var resUsers = await _redditUserService.GetTopUsersAsync(AccessToken, TokenType.AccessToken);
 
                     ViewData["PageContent"] = resPosts;
 
@@ -67,9 +68,8 @@ namespace Reddit.Integration.Client.Web.Controllers {
 
             try {
                 if (!string.IsNullOrWhiteSpace(AccessToken)) {
-
-                    RedditPostService rps = new RedditPostService(_redditServiceConfig);
-                    var resPosts = await rps.GetTopPostsAsync(AccessToken, TokenType.AccessToken);
+                    
+                    var resPosts = await _redditPostService.GetTopPostsAsync(AccessToken, TokenType.AccessToken);
 
                     return PartialView("_TopPosts", resPosts);
                 }
@@ -101,8 +101,7 @@ namespace Reddit.Integration.Client.Web.Controllers {
 
                 if (!string.IsNullOrWhiteSpace(AccessToken)) {
 
-                    RedditUserService rus = new RedditUserService(_redditServiceConfig);
-                    var resUsers = await rus.GetTopUsersAsync(AccessToken, TokenType.AccessToken);
+                    var resUsers = await _redditUserService.GetTopUsersAsync(AccessToken, TokenType.AccessToken);
 
                     return PartialView("_TopUsers", resUsers);
                 }

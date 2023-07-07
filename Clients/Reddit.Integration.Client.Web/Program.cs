@@ -5,6 +5,8 @@ using Microsoft.Extensions.Options;
 using Reddit.Integration.Client.Web.Controllers;
 using Reddit.Integration.Client.Web.Data;
 using Reddit.Integration.Library.Configuration;
+using Reddit.Integration.Library.Interfaces;
+using Reddit.Integration.Library.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +48,8 @@ builder.Services.AddAuthentication()
 
 builder.Services.Configure<RedditServiceConfig>(builder.Configuration.GetSection(RedditServiceConfig.SECTION_NAME));
 builder.Services.AddTransient(_ => _.GetRequiredService<IOptions<RedditServiceConfig>>().Value);
-
+builder.Services.AddScoped<IRedditPostService, RedditPostService>();
+builder.Services.AddScoped<IRedditUserService, RedditUserService>();
 
 
 
