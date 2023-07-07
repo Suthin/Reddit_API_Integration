@@ -30,9 +30,9 @@
         var strHours = DateTime.getHours();
         var strMinutes = DateTime.getMinutes();
         var strSeconds = DateTime.getSeconds();
-        var tagDiv = document.getElementById("divDate");
+        var tagDiv = document.getElementById("divPostLastUpdatedOn");
         tagDiv.innerText = "MM/DD/YYYY  HH:MM:SS";
-        tagDiv.innerText ="Last updated on: "  strMonth + "/" + strDay + "/" + strYear + "  " + strHours + ":" + strMinutes + ":" + strSeconds;
+        tagDiv.innerText ="Last updated on: " + strMonth + "/" + strDay + "/" + strYear + "  " + strHours + ":" + strMinutes + ":" + strSeconds;
     }
 
     DisplayPostsDateTime();
